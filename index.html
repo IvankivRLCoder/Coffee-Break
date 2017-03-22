@@ -9,8 +9,39 @@
     <script src="assets/dest/js/main.js"></script>
 </head>
 
-<body data-ng-app="" data-ng-controller="">
-   
+<body data-ng-app="homePage" data-ng-controller="homePageCtrl" class="flex-column-class flex-between-class">
+    <header class="flex-row-class flex-between-class">
+        <div class="flex-row-class flex-center-center-class">
+            <h1>Coffee Break</h1>
+        </div>
+        <div class="menu flex-row-class flex-center-center-class">
+            <a href=""><span>NEWS</span></a>
+            <a href=""><span>LIFESTYLE</span></a>
+            <a href=""><span>VIDEO</span></a>
+            <a href=""><span>POLITICS</span></a>
+        </div>
+    </header>
+    <div class="popup flex-row-class flex-center-center-class" ng-style="myStyle">
+        <div>
+            <span ng-click="myStyle={'display':'none'}"><img src="assets/dest/img/close-icon.png" alt="close"></span>
+            <form>
+                <input type="text">
+                <input type="text">
+            </form>
+        </div>
+    </div>
+    <section class="flex-row-class">
+        <div data-ng-repeat="new in news | orderBy:propertyName:reverse">
+            <h2>{{new.displayName}}</h2><span >{{new.createdAt}}</span>
+            <p>{{new.message}}</p>
+        </div>
+        <div class="add-new-mes flex-row-class flex-center-center-class">
+            <span ng-click="myStyle={'display':'flex'}">Add new message</span>
+        </div>
+    </section>
+    <footer class="flex-row-class flex-center-center-class">
+        <span>by IvankivRLCoder</span>
+    </footer>
 </body>
 
 </html>
