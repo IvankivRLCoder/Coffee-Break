@@ -5,43 +5,44 @@
     <meta charset="UTF-8">
     <title>Coffee</title>
     <link rel="stylesheet" href="assets/dest/css/styles.min.css">
-    <script src="assets/dest/js/angular.min.js"></script>
-    <script src="assets/dest/js/main.js"></script>
 </head>
 
-<body data-ng-app="homePage" data-ng-controller="homePageCtrl" class="flex-column-class flex-between-class">
+<body data-ng-app="homePage" data-ng-controller="homePageCtrl" class="flex-column-class flex-between-class" data-ng-cloak>
     <header class="flex-row-class flex-between-class">
         <div class="flex-row-class flex-center-center-class">
             <h1>Coffee Break</h1>
         </div>
         <div class="menu flex-row-class flex-center-center-class">
-            <a href=""><span>NEWS</span></a>
-            <a href=""><span>LIFESTYLE</span></a>
-            <a href=""><span>VIDEO</span></a>
-            <a href=""><span>POLITICS</span></a>
+            <a href="#"><span>NEWS</span></a>
+            <a href="#"><span>LIFESTYLE</span></a>
+            <a href="#"><span>VIDEO</span></a>
+            <a href="#"><span>POLITICS</span></a>
         </div>
     </header>
     <div class="popup flex-row-class flex-center-center-class" ng-style="myStyle">
         <div>
             <span ng-click="myStyle={'display':'none'}"><img src="assets/dest/img/close-icon.png" alt="close"></span>
-            <form>
-                <input type="text">
-                <input type="text">
+            <form class="flex-column-class flex-center-center-class">
+                <input type="text" ng-model='post.displayName' placeholder="name" maxlength="30" required>
+                <input type="text" ng-model='post.message' placeholder="message" required>
+                <input type="submit" ng-click="addMessage(post)" value="Fine">
             </form>
         </div>
     </div>
     <section class="flex-row-class">
-        <div data-ng-repeat="new in news | orderBy:propertyName:reverse">
-            <h2>{{new.displayName}}</h2><span >{{new.createdAt}}</span>
+        <div data-ng-repeat="new in allNews | orderBy:sortColumn:reverseSort">
+            <h2>{{new.displayName}}</h2><span ng-click="sortData('createdAt')">{{new.createdAt}}</span>
             <p>{{new.message}}</p>
         </div>
-        <div class="add-new-mes flex-row-class flex-center-center-class">
-            <span ng-click="myStyle={'display':'flex'}">Add new message</span>
+        <div class="add-new-mes flex-row-class flex-center-center-class" ng-click="myStyle={'display':'flex'}">
+            <span class="add-new-mes-text">Add new message</span>
         </div>
     </section>
     <footer class="flex-row-class flex-center-center-class">
         <span>by IvankivRLCoder</span>
     </footer>
+    <script src="assets/dest/js/angular.min.js"></script>
+    <script src="assets/dest/js/main.js"></script>
 </body>
 
 </html>
